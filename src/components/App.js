@@ -1,68 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react';
+import { BrowserRouter, Route } from 'react-router-dom';
+import Menu from './Menu';
+import Usuarios from './Usuarios/Index';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      usuarios: [
-        {
-          nombre: 'Rodolfo',
-          correo: 'Rodolfo@saldivar.com',
-          enlace: 'Rodolfo.com'
-        },
-        {
-          nombre: 'Platzi',
-          correo: 'platzi@platzi.com',
-          enlace: 'Platzi.com'
-        }
-      ]
-    }
-  }
+const Tareas = () => <div>Tareas</div>
 
-  componentDidMount() {
-    console.log('hola');
-  }
+const App = () => (
+<BrowserRouter>
+  <Menu />
+  <div className="margen">
+    <Route exact path='/' component={ Usuarios } />
+    <Route exact path='/tareas' component={ Tareas } />
+  </div>
+</BrowserRouter>
 
-  ponerFilas = () => (
-    this.state.usuarios.map((usuarios) => (
-      <tr>
-        <td>
-          { usuarios.nombre }
-        </td>
-        <td>
-          { usuarios.correo }
-        </td>
-        <td>
-          { usuarios.enlace }
-        </td>
-      </tr>
-    ))
-      );
+);
 
-  render() {
-    return (
-      <div className="margen">
-        <table className="tabla">
-        <thread>
-          <tr>
-            <th>
-              Nombre
-            </th>
-            <th>
-              Correo
-            </th>
-            <th>
-              Enlace
-            </th>
-          </tr>
-        </thread>
-        <tbody>
-        { this.ponerFilas() }
-  </tbody>
-  </table>
-      </div>
-    );
-  }
-}
 
-export default App
+
+export default App;
